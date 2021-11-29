@@ -1,12 +1,23 @@
 import React from "react";
-import Windspeed from "./Windspeed";
-import Humidity from "./Humidity";
-import "./details.css";
-export default function Details() {
-  return (
-    <h3 className="details">
-      <Windspeed />
-      <Humidity />
-    </h3>
-  );
+
+
+export default function details () {
+    let humid = 20;
+return (
+<h3 className="details">
+<div className="windspeed">
+  Windspeed{" "}
+  <div>
+    <span>4</span> km/hr
+  </div>
+</div>
+  <div className="humidity">
+      <div>Humidity </div>
+      <div>
+        {" "}
+        <span>{humid}</span>%
+      </div>
+    </div>
+</h3>
+);
 }
