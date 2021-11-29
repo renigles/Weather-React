@@ -5,12 +5,15 @@ import Card from "./Card";
 import Footer from "./Footer";
 import "./document.css";
 import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.css';
 
 ReactDOM.render(
   <React.StrictMode>
-   <div className="document">
+   <div className= "App">
+   <div className="document container">
       <Card />
       <Footer />
+    </div>
     </div>
   </React.StrictMode>,
   document.getElementById('root')
