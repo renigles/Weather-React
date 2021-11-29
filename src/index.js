@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Card from "./Card";
+import Footer from "./Footer";
+import "./document.css";
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+   <div className="document">
+      <Card />
+      <Footer />
+    </div>
   </React.StrictMode>,
   document.getElementById('root')
 );

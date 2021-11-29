@@ -1,0 +1,10 @@
+.note {
+    padding: 10px, 10px;
+    font-size: 20px;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    background: rgba(211, 211, 211, 0.6);
+    border-radius: 15px;
+    text-transform: capitalize;
+  }
