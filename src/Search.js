@@ -1,14 +1,9 @@
 import React from "react";
 
-export default function Humidity() {
-  let humid = 20;
+export default function Search() {
   return (
-    <div className="humidity">
-      <div>Humidity </div>
-      <div>
-        {" "}
-        <span>{humid}</span>%
-      </div>
-    </div>
+    <form className="search">
+      <input type="text" placeholder="Enter city name" />
+    </form>
   );
 }
