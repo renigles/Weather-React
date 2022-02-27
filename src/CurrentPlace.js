@@ -1,10 +1,10 @@
 import React from "react";
 import "./currentPlace.css";
-export default function CurrentPlace() {
-  let city = "New York";
+export default function CurrentPlace(props) {
+
   let date = "Monday April 7th";
   let time = "2:24PM";
-
+  let city = props.city;
   return (
     <div className="current">
       {" "}
