@@ -12,6 +12,7 @@ export default function Card() {
   const [place, setPlace] = useState (null);
   const [ready, setReady] = useState(false);
   const [temp, setTemp] = useState(null);
+  const [date, setDate] = useState(null);
   const [windspeed, setWindspeed] = useState (null);
   const [humidity, setHumidity] = useState (null);
   const [description, setDescription] = useState (null);
@@ -46,7 +47,8 @@ event.preventDefault();
     setHumidity(response.data.main.humidity);
     setDescription (response.data.weather[0].description);
     setIcon (response.data.weather[0].icon);
-   
+    setDate( new Date (response.data.dt * 1000));
+
     }
 
 
@@ -57,7 +59,7 @@ if (ready){
       <header>
         <div className="row">
           <div className="col-6">
-            <CurrentPlace city={city}  />
+            <CurrentPlace city={city} date={date} />
             <div className="row current">
               <div className="col-9">
                 <CurrentWeather city={city} temp={temp} icon={icon}/>
