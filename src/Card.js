@@ -16,7 +16,7 @@ export default function Card() {
   const [humidity, setHumidity] = useState (null);
   const [description, setDescription] = useState (null);
   const [icon, setIcon] = useState (null);
-  const [trigger, setTrigger] = useState(false);
+  
   
   function search(location){
    
