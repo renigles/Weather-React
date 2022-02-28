@@ -9,25 +9,34 @@ import "./card.css";
 
 export default function Card() {
   const [city, setCity]= useState("New York");
+  const [place, setPlace] = useState (null);
   const [ready, setReady] = useState(false);
   const [temp, setTemp] = useState(null);
   const [windspeed, setWindspeed] = useState (null);
   const [humidity, setHumidity] = useState (null);
   const [description, setDescription] = useState (null);
   const [icon, setIcon] = useState (null);
+  const [trigger, setTrigger] = useState(false);
   
-
-  function handleSubmit() {
-
+  function search(location){
+   
     const apiKey = "16f449ba2c6eb2958ad3c1f42a8facfa";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`; 
-  axios.get(apiUrl).then(handleResponse);
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric`; 
+    axios.get(apiUrl).then(handleResponse);
 
+    setReady(true);
   }
 
+  function handleSubmit(event) {
+event.preventDefault();
+    search (place);
+   setCity(place);
+    }
+
   function handleChange (event){
-    event.preventDefault();
-    setCity(event.target.value);
+    
+      setPlace(event.target.value)
+    
   }
   
   function handleResponse (response){
@@ -37,12 +46,12 @@ export default function Card() {
     setHumidity(response.data.main.humidity);
     setDescription (response.data.weather[0].description);
     setIcon (response.data.weather[0].icon);
-    setReady(true);
+   
     }
 
 
-if (ready === true){
-  
+if (ready){
+
   return (
     <span className="card p-3 mb-2 bg-info bg-gradient text-dark">
       <header>
@@ -57,8 +66,8 @@ if (ready === true){
           </div>
           <div className="col-6">
           <form className="search" onSubmit={handleSubmit} >
-      <input type="text" placeholder="Enter city name" />
-      <input type="submit" value="search" onChange={handleChange} />
+      <input type="text" placeholder="Enter city name" onChange={handleChange} />
+      <input type="submit" value="search" />
     </form >
             <Details city={city} windspeed={windspeed} humidity={humidity}/>
           </div>
@@ -69,11 +78,7 @@ if (ready === true){
     </span>
   );
 } else {
-
-  const apiKey = "16f449ba2c6eb2958ad3c1f42a8facfa";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`; 
-  axios.get(apiUrl).then(handleResponse);
-
+  search (city);
   return ("loading...");
 }
 }
